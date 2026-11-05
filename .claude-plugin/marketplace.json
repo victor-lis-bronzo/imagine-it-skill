@@ -1,0 +1,12 @@
+{
+  "name": "imagine-it-skill",
+  "description": "Skill that turns specs, issues and tickets into speculative HTML mockups.",
+  "owner": { "name": "victor-lis-bronzo" },
+  "plugins": [
+    {
+      "name": "imagine-it",
+      "source": "./",
+      "description": "Turn a spec, issue or ticket into speculative HTML mockups that follow the current repo's design."
+    }
+  ]
+}

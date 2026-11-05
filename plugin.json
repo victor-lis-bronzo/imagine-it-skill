@@ -1,0 +1,5 @@
+{
+  "name": "imagine-it",
+  "version": "0.1.0",
+  "description": "Turn a spec, issue or ticket into speculative HTML mockups that follow the current repo's design."
+}

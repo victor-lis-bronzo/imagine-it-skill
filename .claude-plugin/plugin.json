@@ -1,0 +1,10 @@
+{
+  "name": "imagine-it",
+  "version": "0.1.0",
+  "description": "Turn a spec, issue or ticket into speculative HTML mockups that follow the current repo's design.",
+  "author": { "name": "victor-lis-bronzo" },
+  "homepage": "https://github.com/victor-lis-bronzo/imagine-it-skill",
+  "repository": "https://github.com/victor-lis-bronzo/imagine-it-skill",
+  "license": "MIT",
+  "keywords": ["mockup", "wireframe", "design", "html", "skill"]
+}
