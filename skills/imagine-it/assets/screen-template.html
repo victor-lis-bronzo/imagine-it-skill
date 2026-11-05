@@ -1,0 +1,72 @@
+<!doctype html>
+<!-- REPLACE: lang = target repo's copy language (e.g. pt-BR); data-fidelity = hifi | wireframe (match the Mode line in the hub). Add data-has-dark ONLY if the repo has dark mode. -->
+<html lang="en" data-fidelity="hifi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- REPLACE: "NN · Screen name". Shown in the toolbar. -->
+  <title>01 · Screen name</title>
+  <meta name="ii-index" content="index.html">
+  <!-- REPLACE: previous/next screen files in flow order. DELETE the tag at the start/end of the flow. -->
+  <meta name="ii-prev" content="00-previous.html">
+  <meta name="ii-next" content="02-next.html">
+  <link rel="stylesheet" href="styles.css">
+  <script src="ii.js" defer></script>
+</head>
+<body>
+  <!-- REPLACE: imitate the repo's real shell (sidebar items, topbar actions, user menu). Keep only tokens in styles. -->
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <div class="sidebar__brand">Product</div>
+      <nav>
+        <ul class="sidebar__nav">
+          <!-- REPLACE: real nav labels; mark the current one with aria-current="page". -->
+          <!-- href="#" is fine for links outside the flow. -->
+          <li><a href="#" aria-current="page">Dashboard</a></li>
+          <li><a href="#">Orders</a></li>
+          <li><a href="#">Customers</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="app-shell__body">
+      <header class="topbar">
+        <span class="topbar__crumb">Orders / Detail</span>
+        <button class="btn btn--primary" type="button">
+          <!-- Icons are inline SVG only. -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          New order
+        </button>
+      </header>
+
+      <main class="main">
+        <div class="page-header">
+          <div>
+            <h1>Page title</h1>
+          </div>
+          <!-- REPLACE: page-level actions from the spec. -->
+        </div>
+
+        <!-- REPLACE: one <section data-state> per state. The first is the initial state; name it "default" when a neutral state exists. Anything that varies by state (subtitle, counts, header text) goes INSIDE the section. Remove the extras if the screen has a single state. -->
+        <section data-state="default">
+          <p class="muted">3 orders this week.</p>
+          <!-- REPLACE: data-note="AC-n: ..." for each acceptance criterion; "NOTE: ..." for assumptions/design decisions. -->
+          <article class="card" data-note="AC-1: Describe the acceptance criterion this card satisfies.">
+            <h2>Card title</h2>
+            <!-- REPLACE: realistic domain data. Never lorem ipsum. -->
+            <p>Order #4821 for Marina Duarte, 3 items, total $128.40.</p>
+          </article>
+        </section>
+
+        <section data-state="empty">
+          <p class="muted">No orders this week.</p>
+          <div class="card empty" data-note="NOTE: Empty-state copy is an assumption.">
+            <h2>No orders yet</h2>
+            <p class="muted">Orders will show up here once a customer checks out.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

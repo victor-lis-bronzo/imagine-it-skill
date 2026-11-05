@@ -1,0 +1,101 @@
+<!doctype html>
+<!-- REPLACE: lang = target repo's copy language; data-fidelity = hifi | wireframe (match the Mode line below). Add data-has-dark only if the repo has dark mode. -->
+<html lang="en" data-fidelity="hifi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- REPLACE: feature name -->
+  <title>Feature name · Mockups</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Hub has no prev/next; ii.js still adds the notes toggle. -->
+  <script src="ii.js" defer></script>
+  <style>
+    /* Hub-only layout. Tokens only. */
+    .hub { max-width: 960px; margin: 0 auto; padding: calc(var(--space-unit) * 5) calc(var(--space-unit) * 3); }
+    .hub section { margin-top: calc(var(--space-unit) * 4); }
+    .hub h2 { font-size: 18px; margin-bottom: calc(var(--space-unit) * 1.5); }
+    .hub .meta { display: flex; flex-wrap: wrap; gap: calc(var(--space-unit) * 2); color: var(--color-text-muted); font-size: 13px; margin-top: var(--space-unit); }
+    .hub .flow { list-style: none; padding: 0; margin: 0; display: grid; gap: calc(var(--space-unit) * 1.5); grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+    .hub .screen-card { display: block; padding: calc(var(--space-unit) * 2); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); color: inherit; text-decoration: none; }
+    .hub .screen-card:hover, .hub .screen-card:focus-visible { border-color: var(--color-primary); }
+    .hub .screen-card__num { font-family: var(--font-mono); color: var(--color-text-muted); font-size: 12px; }
+    .hub .screen-card__states { color: var(--color-text-muted); font-size: 12px; margin-top: var(--space-unit); }
+    .hub table { width: 100%; border-collapse: collapse; background: var(--color-surface); border: 1px solid var(--color-border); }
+    .hub th, .hub td { text-align: left; padding: var(--space-unit); border-bottom: 1px solid var(--color-border); vertical-align: top; }
+    .hub footer { margin-top: calc(var(--space-unit) * 6); padding-top: calc(var(--space-unit) * 2); border-top: 1px solid var(--color-border); color: var(--color-text-muted); font-size: 12px; }
+  </style>
+</head>
+<body>
+  <main class="hub">
+    <header>
+      <!-- REPLACE: feature title and a one-line goal. -->
+      <h1>Feature name</h1>
+      <p>One-line goal: what the user can do after this feature ships.</p>
+      <div class="meta">
+        <!-- REPLACE: source ID/link text only if it is a local reference; do not add http(s) links. -->
+        <span>Source: #123 Issue title</span>
+        <span>Date: YYYY-MM-DD</span>
+        <span>Mode: hi-fi <!-- REPLACE: hi-fi | wireframe --></span>
+      </div>
+    </header>
+
+    <section aria-labelledby="spec">
+      <h2 id="spec">Spec summary</h2>
+      <!-- REPLACE: 3-6 lines summarizing the spec in your own words. -->
+      <p>Summary of the requested behavior.</p>
+    </section>
+
+    <section aria-labelledby="flow">
+      <h2 id="flow">Flow</h2>
+      <ol class="flow">
+        <!-- REPLACE: one card per screen file, in flow order. -->
+        <li>
+          <a class="screen-card" href="01-screen-name.html">
+            <span class="screen-card__num">01</span>
+            <h3>Screen name</h3>
+            <p>Purpose of this screen in one sentence.</p>
+            <p class="screen-card__states">States: default, empty, error</p>
+          </a>
+        </li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="ac">
+      <h2 id="ac">Acceptance criteria coverage</h2>
+      <table>
+        <thead><tr><th scope="col">AC</th><th scope="col">Criterion</th><th scope="col">Screens</th></tr></thead>
+        <tbody>
+          <!-- REPLACE: one row per AC. Every AC must map to at least one screen. -->
+          <tr><td>AC-1</td><td>Criterion text</td><td><a href="01-screen-name.html">01</a></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section aria-labelledby="assumptions">
+      <h2 id="assumptions">Assumptions</h2>
+      <ul><!-- REPLACE --><li>Assumption made where the spec was silent.</li></ul>
+    </section>
+
+    <section aria-labelledby="oos">
+      <h2 id="oos">Out of scope</h2>
+      <ul><!-- REPLACE --><li>Thing deliberately not mocked up.</li></ul>
+    </section>
+
+    <section aria-labelledby="questions">
+      <h2 id="questions">Open questions</h2>
+      <ul><!-- REPLACE --><li>Question for the product owner or designer.</li></ul>
+    </section>
+
+    <section aria-labelledby="sources">
+      <h2 id="sources">Design sources</h2>
+      <!-- REPLACE: repo file paths the tokens and patterns came from (plain text, not links). -->
+      <ul>
+        <li><code>src/styles/tokens.css</code>: color and spacing tokens</li>
+        <li><code>src/components/Button.tsx</code>: button pattern</li>
+      </ul>
+    </section>
+
+    <footer>Speculative mockup generated by imagine-it — not a final design.</footer>
+  </main>
+</body>
+</html>
