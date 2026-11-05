@@ -10,7 +10,8 @@ The output contract for everything written to the target repo. Follow it exactly
 ├── styles.css          # tokens + base.css + feature styles
 ├── ii.js               # copied verbatim from assets/ii.js
 ├── 01-<screen>.html    # one file per screen, flow order
-└── 02-<screen>.html
+├── 02-<screen>.html
+└── screenshots/        # only with `--screenshot`: NN-<screen>[--<state>][--dark].<ext>, plus index.<ext>
 ```
 
 - Slug: lowercase kebab-case, ASCII only; see context-intake.md for the slug rule (issue number / ticket key prefix). If `<out>/<slug>/` already exists and this is a NEW spec, append `-2`; if it is the same spec, edit in place.
@@ -78,7 +79,7 @@ Each screen declares, in `<head>`:
 <script src="ii.js" defer></script>
 ```
 
-`<title>` is `NN · Screen name`. `ii.js` builds the toolbar from these and adds `ii-has-bar` to `<body>`. In-page links between screens should point to the real next file.
+`<title>` is `NN · Screen name`. `ii.js` builds the toolbar from these and adds `ii-has-bar` to `<body>` (except in capture mode). In-page links between screens should point to the real next file.
 
 ## Responsive
 
@@ -89,6 +90,15 @@ Each screen declares, in `<head>`:
 ## Dark mode
 
 Only if the repo has dark mode: set `data-has-dark` on `<html>` and add `:root[data-theme="dark"] { ...token overrides... }` to `styles.css`. Otherwise do neither; the theme toggle must not appear. The choice persists (`ii-theme`).
+
+## Capture mode
+
+Used only by `--screenshot`. Open a screen as `file:///<abs-path>/<file>.html?ii-capture&theme=<light|dark>[&notes=1]#state=<name>`:
+
+- `ii-capture`: no toolbar, no `ii-has-bar`; `<html>` gets `ii-capture`. States and pins are still built; `#state=` still works.
+- `theme=light|dark`: the only theme source (dark applies only with `data-has-dark`).
+- `notes=1`: shows the notes overlay; otherwise it is off.
+- Nothing is read from or written to storage (`ii-theme`, `ii-notes`).
 
 ## Pre-delivery checklist
 
@@ -102,3 +112,12 @@ The single definition of "done". Every item must pass.
 - [ ] No lorem ipsum.
 - [ ] No raw hex/rgb/rgba outside the tokens block and the verbatim base.css section.
 - [ ] Hub lists assumptions, out of scope, open questions, and design sources.
+
+### Screenshots (only with `--screenshot`)
+
+- [ ] Every planned image exists and is non-empty.
+- [ ] Format matches the flag (PNG magic `89 50 4E 47`, JPEG `FF D8 FF`).
+- [ ] File names match `NN-<screen>[--<state>][--dark].<ext>`.
+- [ ] At least one captured image was viewed: no toolbar and no notes overlay (unless `--notes`).
+- [ ] Dark images only exist when `data-has-dark` is set.
+- [ ] The hub links every image with relative paths.

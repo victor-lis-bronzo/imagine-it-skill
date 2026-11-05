@@ -20,6 +20,8 @@
     .hub .screen-card:hover, .hub .screen-card:focus-visible { border-color: var(--color-primary); }
     .hub .screen-card__num { font-family: var(--font-mono); color: var(--color-text-muted); font-size: 12px; }
     .hub .screen-card__states { color: var(--color-text-muted); font-size: 12px; margin-top: var(--space-unit); }
+    .hub .shots { list-style: none; padding: 0; margin: 0; display: grid; gap: calc(var(--space-unit) * 1.5); grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+    .hub .shots img { display: block; width: 100%; height: auto; border: 1px solid var(--color-border); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
     .hub table { width: 100%; border-collapse: collapse; background: var(--color-surface); border: 1px solid var(--color-border); }
     .hub th, .hub td { text-align: left; padding: var(--space-unit); border-bottom: 1px solid var(--color-border); vertical-align: top; }
     .hub footer { margin-top: calc(var(--space-unit) * 6); padding-top: calc(var(--space-unit) * 2); border-top: 1px solid var(--color-border); color: var(--color-text-muted); font-size: 12px; }
@@ -58,6 +60,15 @@
           </a>
         </li>
       </ol>
+    </section>
+
+    <!-- REPLACE: include this section only when --screenshot was used; remove it otherwise -->
+    <section aria-labelledby="screenshots">
+      <h2 id="screenshots">Screenshots</h2>
+      <ul class="shots">
+        <li><a href="screenshots/01-screen-name.png"><img src="screenshots/01-screen-name.png" alt="Screen name, default state" loading="lazy"></a></li>
+        <li><a href="screenshots/01-screen-name--empty.png"><img src="screenshots/01-screen-name--empty.png" alt="Screen name, empty state" loading="lazy"></a></li>
+      </ul>
     </section>
 
     <section aria-labelledby="ac">

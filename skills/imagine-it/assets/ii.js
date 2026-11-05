@@ -1,6 +1,7 @@
 /* imagine-it: mockup toolbar, states, notes overlay. Vanilla, file:// safe. Copy verbatim. */
 (function () {
   var d = document, h = d.documentElement;
+  var q = new URLSearchParams(location.search), cap = q.has('ii-capture'); // capture mode: no toolbar, no persistence
   function meta(n) { var m = d.querySelector('meta[name="' + n + '"]'); return m ? m.content : ''; }
   function el(tag, cls, txt) { var e = d.createElement(tag); if (cls) e.className = cls; if (txt) e.textContent = txt; return e; }
   function link(href, txt) { var a = el('a', '', txt); a.href = href; return a; }
@@ -61,11 +62,11 @@
 
   var nb = el('button', '', 'Notes'); nb.type = 'button';
   function setNotes(on) {
-    h.classList.toggle('ii-notes-on', on); nb.setAttribute('aria-pressed', String(on)); store('ii-notes', on ? '1' : '0');
+    h.classList.toggle('ii-notes-on', on); nb.setAttribute('aria-pressed', String(on)); if (!cap) store('ii-notes', on ? '1' : '0');
   }
   nb.onclick = function () { setNotes(!h.classList.contains('ii-notes-on')); };
   bar.appendChild(nb);
-  setNotes(store('ii-notes') === '1');
+  setNotes(cap ? q.get('notes') === '1' : store('ii-notes') === '1');
   d.addEventListener('keydown', function (e) {
     var t = e.target.tagName;
     if (e.key === 'n' && !e.ctrlKey && !e.metaKey && !e.altKey && !/INPUT|TEXTAREA|SELECT/.test(t) && !e.target.isContentEditable) nb.click();
@@ -73,13 +74,14 @@
 
   // Theme (persisted)
   if (h.hasAttribute('data-has-dark')) {
-    var saved = store('ii-theme'); if (saved) h.setAttribute('data-theme', saved);
+    var saved = cap ? (q.get('theme') === 'dark' ? 'dark' : '') : store('ii-theme'); if (saved) h.setAttribute('data-theme', saved);
     var tb = el('button', '', 'Theme'); tb.type = 'button';
     tb.onclick = function () {
       var t = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      h.setAttribute('data-theme', t); store('ii-theme', t);
+      h.setAttribute('data-theme', t); if (!cap) store('ii-theme', t);
     };
     bar.appendChild(tb);
   }
-  d.body.appendChild(bar); d.body.classList.add('ii-has-bar');
+  if (cap) h.classList.add('ii-capture');
+  else { d.body.appendChild(bar); d.body.classList.add('ii-has-bar'); }
 })();

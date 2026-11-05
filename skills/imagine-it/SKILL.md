@@ -12,6 +12,10 @@ Input (all optional, any order): an issue/PR URL or `#123`, a Jira key or URL, a
 - `--wireframe` — force grayscale wireframe instead of the repo's look.
 - `--out <dir>` — output root (default `.imagine-it/` at the repo root). Output always goes to `<out>/<slug>/`.
 - `--screens <n>` — cap or force the number of screen files.
+- `--screenshot[=png|jpeg]` — also capture images of the screens (PNG default).
+- `--states` — with a screenshot, capture every state, not just the initial one.
+- `--viewport <WxH>` — capture size (default 1440x900; 390x844 for mobile-first products).
+- `--notes` — capture with the spec-notes overlay on (default off).
 
 With no input, the spec is the current conversation.
 
@@ -65,8 +69,15 @@ Full output contract and pre-delivery checklist: [references/html-conventions.md
 
 Run the pre-delivery checklist in [references/html-conventions.md](references/html-conventions.md). Done when every checklist item passes; fix and re-check otherwise.
 
-### 6. Hand off
+### 6. Capture (only with `--screenshot`)
 
-Reply with: the path to `index.html`, the screen plan table, the assumptions and open questions, and an offer to open it (`start` on Windows, `open` on macOS, `xdg-open` on Linux). If `<out>` is inside the repo and not already ignored, suggest adding it to `.gitignore`.
+Skipped entirely without a screenshot flag. Otherwise render the planned screens (and the hub, last) to images in `<out>/<slug>/screenshots/` and add a Screenshots section to `index.html`. A capture problem never blocks the run.
 
-Follow-ups: rebuild context from `<out>/<slug>/index.html` (assumptions, design sources) and `styles.css`; do not re-sweep the repo; keep the slug; update `index.html` to match; re-run step 5.
+Done when: every planned image exists, is non-empty, has the right magic bytes, and the first image was viewed; skipped shots are reported with the manual command.
+Flags, light/dark, naming, tool ladder and fallbacks: [references/screenshots.md](references/screenshots.md).
+
+### 7. Hand off
+
+Reply with: the path to `index.html`, the screen plan table, the screenshot paths (plus any skipped shots and their manual command), the assumptions and open questions, and an offer to open it (`start` on Windows, `open` on macOS, `xdg-open` on Linux). If `<out>` is inside the repo and not already ignored, suggest adding it to `.gitignore`.
+
+Follow-ups: rebuild context from `<out>/<slug>/index.html` (assumptions, design sources) and `styles.css`; do not re-sweep the repo; keep the slug; update `index.html` to match; re-run step 5 (and, if screenshots existed, re-capture the affected screens and the hub).

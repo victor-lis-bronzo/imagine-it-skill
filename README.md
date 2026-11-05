@@ -21,6 +21,7 @@ Written to `<out>/<slug>/` (default `<out>` = `.imagine-it/`):
 ├── 01-orders-list.html
 ├── 02-export-dialog.html
 ├── 03-export-status.html
+├── screenshots/      optional, with --screenshot: PNG/JPEG of each screen and the hub
 ├── styles.css        your repo's tokens + mockup chrome
 └── ii.js             tiny toolbar: next/prev screen, state switcher, spec notes
 ```
@@ -110,6 +111,19 @@ Manual, script and `npx skills` installs invoke as plain `/imagine-it`.
 | `--wireframe` | Grayscale wireframe, ignores the repo's visual style |
 | `--out <dir>` | Output root (default `.imagine-it/`) |
 | `--screens <n>` | Cap or force the number of screen files |
+| `--screenshot[=png\|jpeg]` | Also capture images of the screens (PNG default, JPEG quality 90) |
+| `--states` | With a screenshot, capture every state of each screen, not just the initial one |
+| `--viewport <WxH>` | Capture size (default `1440x900`; `390x844` for mobile-first products) |
+| `--notes` | Capture with the spec-notes overlay on (default off) |
+
+### Screenshots
+
+```
+/imagine-it #142 --screenshot
+/imagine-it #142 --screenshot=jpeg --states
+```
+
+Full-page images of each screen, plus the hub, are written to `<out>/<slug>/screenshots/` (for example `01-orders-list--empty--dark.png`) and linked from a Screenshots section in `index.html`. If your repo has dark mode, the skill asks whether to capture light, dark or both (recommended: both); single-mode repos are captured as-is. Without a browser tool it falls back to headless Chrome/Edge, which captures the viewport only and writes PNG only (JPEG needs a converter such as `magick`); if nothing works, the HTML is still delivered and the manual command is printed.
 
 Iterate in conversation ("make the dialog a side drawer"): the skill edits the same folder.
 
