@@ -33,6 +33,16 @@ Written to `<out>/<slug>/` (default `<out>` = `.imagine-it/`):
 
 It is a conversation piece, not production code.
 
+## Example output
+
+A full run lives in [`examples/daily-review-playlist/`](examples/daily-review-playlist/index.html): a made-up "daily review playlist" feature for a language-learning app, mocked up in that app's dark theme. Open `index.html` straight from disk. Press `n` to see which acceptance criterion each element covers.
+
+| Hub | Screen with notes overlay (`n`) |
+| :--- | :--- |
+| ![Hub](examples/daily-review-playlist/screenshots/index.png) | ![Queue screen with notes](examples/daily-review-playlist/screenshots/01-daily-queue--notes.png) |
+
+The feature, phrases and decks are invented for the demo.
+
 ## Install
 
 Pick one.
