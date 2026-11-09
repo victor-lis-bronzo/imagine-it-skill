@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" data-fidelity="hifi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>02 · Daily result</title>
+  <meta name="ii-index" content="index.html">
+  <meta name="ii-prev" content="01-daily-queue.html">
+  <link rel="stylesheet" href="styles.css">
+  <script src="ii.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="nav"><div class="nav__brand"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" aria-hidden="true"><path d="M7 5l12 7-12 7z"/></svg>Lang Clips</div><nav class="nav__links" aria-label="Main navigation"><a href="#">Home</a><a href="#" aria-current="page">My Decks</a></nav></header>
+    <main class="col">
+      <section data-state="default">
+        <p class="eyebrow">Daily review &middot; done</p>
+        <h1 class="display">Nice work today</h1>
+        <div class="score" data-note="AC-4: Result shows how many of the 5 phrases were answered correctly today.">
+          <div class="score__num">4/5</div>
+          <p class="muted">phrases answered correctly</p>
+          <span class="streak" data-note="NOTE: Streak is an assumption; the spec only asks for the day's result.">&#128293; 6-day review streak</span>
+        </div>
+        <h2 class="display" style="font-size:26px;margin:28px 0 12px">Phrase by phrase</h2>
+        <ul class="queue" data-note="AC-4: Each phrase shows whether it was fixed and its miss count before and after.">
+          <li class="result"><div><div class="clip__phrase">"I'd rather stay in tonight."</div><div class="muted" style="font-size:12px">missed 3&times; &rarr; 2 correct in a row</div></div><span class="result__ok">Correct</span></li>
+          <li class="result"><div><div class="clip__phrase">"She's been working here since 2019."</div><div class="muted" style="font-size:12px">missed 5&times; &rarr; still tricky</div></div><span class="result__bad">Missed</span></li>
+          <li class="result"><div><div class="clip__phrase">"Could you point me to the station?"</div><div class="muted" style="font-size:12px">missed 2&times; &rarr; removed from the list</div></div><span class="result__ok">Correct</span></li>
+          <li class="result"><div><div class="clip__phrase">"I wish I had taken that offer."</div><div class="muted" style="font-size:12px">missed 4&times; &rarr; 1 correct</div></div><span class="result__ok">Correct</span></li>
+          <li class="result"><div><div class="clip__phrase">"It's not as bad as it looks."</div><div class="muted" style="font-size:12px">missed 2&times; &rarr; removed from the list</div></div><span class="result__ok">Correct</span></li>
+        </ul>
+        <div class="actions" style="justify-content:flex-end">
+          <a class="btn" href="01-daily-queue.html">Back to queue</a>
+          <a class="btn btn--primary" href="#" data-note="NOTE: Retrying the missed phrase is an assumed extra action.">Retry missed phrase</a>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

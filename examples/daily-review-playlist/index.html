@@ -1,0 +1,69 @@
+<!doctype html>
+<!-- REPLACE: lang = target repo's copy language; data-fidelity = hifi | wireframe (match the Mode line below). Add data-has-dark only if the repo has dark mode. -->
+<html lang="en" data-fidelity="hifi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- REPLACE: feature name -->
+  <title>Daily review playlist · Mockups</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Hub has no prev/next; ii.js still adds the notes toggle. -->
+  <script src="ii.js" defer></script>
+  <style>
+    /* Hub-only layout. Tokens only. */
+    .hub { max-width: 960px; margin: 0 auto; padding: calc(var(--space-unit) * 5) calc(var(--space-unit) * 3); }
+    .hub section { margin-top: calc(var(--space-unit) * 4); }
+    .hub h2 { font-size: 18px; margin-bottom: calc(var(--space-unit) * 1.5); }
+    .hub .meta { display: flex; flex-wrap: wrap; gap: calc(var(--space-unit) * 2); color: var(--color-text-muted); font-size: 13px; margin-top: var(--space-unit); }
+    .hub .flow { list-style: none; padding: 0; margin: 0; display: grid; gap: calc(var(--space-unit) * 1.5); grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+    .hub .screen-card { display: block; padding: calc(var(--space-unit) * 2); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); color: inherit; text-decoration: none; }
+    .hub .screen-card:hover, .hub .screen-card:focus-visible { border-color: var(--color-primary); }
+    .hub .screen-card__num { font-family: var(--font-mono); color: var(--color-text-muted); font-size: 12px; }
+    .hub .screen-card__states { color: var(--color-text-muted); font-size: 12px; margin-top: var(--space-unit); }
+    .hub .shots { list-style: none; padding: 0; margin: 0; display: grid; gap: calc(var(--space-unit) * 1.5); grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+    .hub .shots img { display: block; width: 100%; height: auto; border: 1px solid var(--color-border); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+    .hub table { width: 100%; border-collapse: collapse; background: var(--color-surface); border: 1px solid var(--color-border); }
+    .hub th, .hub td { text-align: left; padding: var(--space-unit); border-bottom: 1px solid var(--color-border); vertical-align: top; }
+    .hub footer { margin-top: calc(var(--space-unit) * 6); padding-top: calc(var(--space-unit) * 2); border-top: 1px solid var(--color-border); color: var(--color-text-muted); font-size: 12px; }
+  </style>
+</head>
+<body>
+  <main class="hub">
+    <header>
+      <h1>Daily review playlist</h1>
+      <p>Every day LangClips builds a 5-clip queue from the phrases the user missed the most, and shows how the session went.</p>
+      <div class="meta"><span>Source: fictional feature idea (conversation)</span><span>Date: 2026-11-08</span><span>Mode: hi-fi</span></div>
+    </header>
+    <section aria-labelledby="spec"><h2 id="spec">Spec summary</h2>
+      <p>The app picks the 5 phrases the user got wrong most often and turns them into a short playlist of clips. The user plays the clips in order with visible progress, then sees a result screen with the score and what improved. With fewer than 5 mistakes there is no playlist and an empty state explains why.</p></section>
+    <section aria-labelledby="flow"><h2 id="flow">Flow</h2>
+      <ol class="flow">
+        <li><a class="screen-card" href="01-daily-queue.html"><span class="screen-card__num">01</span><h3>Daily review queue</h3><p>Today's 5 clips, progress and the Start button.</p><p class="screen-card__states">States: default, empty</p></a></li>
+        <li><a class="screen-card" href="02-daily-result.html"><span class="screen-card__num">02</span><h3>Daily result</h3><p>Score and phrase-by-phrase outcome after the playlist.</p><p class="screen-card__states">States: default</p></a></li>
+      </ol></section>
+    <section aria-labelledby="screenshots"><h2 id="screenshots">Screenshots</h2>
+      <ul class="shots">
+        <li><a href="screenshots/01-daily-queue.png"><img src="screenshots/01-daily-queue.png" alt="Daily review queue, default state" loading="lazy"></a></li>
+        <li><a href="screenshots/02-daily-result.png"><img src="screenshots/02-daily-result.png" alt="Daily result, default state" loading="lazy"></a></li>
+      </ul></section>
+    <section aria-labelledby="ac"><h2 id="ac">Acceptance criteria coverage</h2>
+      <table><thead><tr><th scope="col">AC</th><th scope="col">Criterion</th><th scope="col">Screens</th></tr></thead><tbody>
+        <tr><td>AC-1</td><td>The playlist has 5 clips from the most-missed phrases</td><td><a href="01-daily-queue.html">01</a></td></tr>
+        <tr><td>AC-2</td><td>Each item shows phrase, deck, difficulty and miss count</td><td><a href="01-daily-queue.html">01</a></td></tr>
+        <tr><td>AC-3</td><td>Clips play in order with visible progress</td><td><a href="01-daily-queue.html">01</a></td></tr>
+        <tr><td>AC-4</td><td>A result screen shows the day's score and per-phrase outcome</td><td><a href="02-daily-result.html">02</a></td></tr>
+        <tr><td>AC-5</td><td>With fewer than 5 mistakes, an empty state explains why</td><td><a href="01-daily-queue.html">01</a></td></tr>
+      </tbody></table></section>
+    <section aria-labelledby="assumptions"><h2 id="assumptions">Assumptions</h2><ul>
+      <li>The entry point is a banner on My Decks.</li><li>A phrase leaves the list after 2 correct answers in a row.</li><li>Streak and "Retry missed phrase" are extras not in the spec.</li><li>Sample phrases and decks are invented.</li></ul></section>
+    <section aria-labelledby="oos"><h2 id="oos">Out of scope</h2><ul><li>The clip player itself and the exercise screens.</li><li>Notifications or reminders.</li></ul></section>
+    <section aria-labelledby="questions"><h2 id="questions">Open questions</h2><ul>
+      <li>How is "missed the most" counted: all time or the last 7 days?</li><li>Should the playlist mix decks or stay within one?</li></ul></section>
+    <section aria-labelledby="sources"><h2 id="sources">Design sources</h2><ul>
+      <li><code>web/src/styles/theme.css</code>: colors, radius and fonts (dark only)</li>
+      <li><code>web/src/components/navbar.tsx</code>: floating navbar, brand and links</li>
+      <li><code>screenshots/difficulty-cards.png</code>: card shape and Caveat display type</li></ul></section>
+    <footer>Speculative mockup generated by imagine-it — not a final design.</footer>
+  </main>
+</body>
+</html>
